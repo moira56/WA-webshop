@@ -39,7 +39,7 @@ const brproizvoda_kosarica = ref(0);
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:3055/proizvodi');
+    const response = await axios.get('http://localhost:3059/proizvodi');
     proizvodi.value = response.data;
   } catch (error) {
     alert('Greška prilikom dohvaćanja proizvoda. Pokušajte ponovno.');
@@ -59,7 +59,7 @@ const naruci = async () => {
   const ukupnaCijena = kosarica.reduce((ukupno, proizvod) => ukupno + proizvod.cijena * proizvod.kolicina, 0);
 
   try {
-    const response = await axios.post('http://localhost:3055/narudzbe', {
+    const response = await axios.post('http://localhost:3059/narudzbe', {
       narudzba: kosarica,
     });
 

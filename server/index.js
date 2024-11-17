@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const { proizvodi } = require('./data.js'); // Pretpostavljam da data.js sadrži proizvode
+const { proizvodi } = require('./data.js'); 
 
 const app = express();
-const PORT = 3055;
+const PORT = 3059;
 
 app.use(cors());
 app.use(express.json());
@@ -14,6 +14,7 @@ class Narudzba {
   constructor(id, narudzba) {
     this.id = id;
     this.narudzba = narudzba;
+    
   }
 
   get ukupnaCijena() {
@@ -24,12 +25,12 @@ class Narudzba {
   }
 }
 
-// Ruta za dohvaćanje svih proizvoda
+
 app.get('/proizvodi', (req, res) => {
   res.status(200).json(proizvodi);
 });
 
-// Ruta za dohvaćanje pojedinog proizvoda prema ID-u
+
 app.get('/proizvodi/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const proizvod = proizvodi.find(p => p.id === id);
@@ -40,9 +41,9 @@ app.get('/proizvodi/:id', (req, res) => {
   }
 });
 
-// Ruta za kreiranje narudžbe
+
 app.post('/narudzbe', (req, res) => {
-  const { narudzba } = req.body; // Frontend šalje narudzba
+  const { narudzba } = req.body; 
 
   if (!Array.isArray(narudzba) || narudzba.length === 0) {
     return res.status(400).json({ message: 'Nema podataka o narudžbi' });
@@ -58,7 +59,7 @@ app.post('/narudzbe', (req, res) => {
   });
 });
 
-// Pokretanje servera
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

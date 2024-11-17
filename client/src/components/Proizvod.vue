@@ -17,7 +17,6 @@
         </ol>
       </nav>
 
-      <!-- Image gallery -->
       <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:max-w-7xl lg:grid lg:grid-cols-3 lg:gap-x-8 lg:px-8">
         <div class="aspect-w-3 aspect-h-4 overflow-hidden rounded-lg">
           <img :src="proizvod.slike[0]" alt="Proizvod slika" class="h-full w-full object-cover object-center" />
@@ -35,18 +34,16 @@
         </div>
       </div>
 
-      <!-- Product info -->
       <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:max-w-7xl lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
         <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
           <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ proizvod.naziv }}</h1>
         </div>
 
-        <!-- Options -->
         <div class="mt-4 lg:row-span-3 lg:mt-0">
           <h2 class="sr-only">Product information</h2>
           <p class="text-3xl tracking-tight text-gray-900">{{ proizvod.cijena }}€</p>
 
-          <!-- Colors -->
+          
           <div class="mt-6">
             <h3 class="text-sm font-medium text-gray-900">Boje</h3>
             <fieldset aria-label="Choose a color" class="mt-4">
@@ -76,7 +73,6 @@
             </div>
           </div>
 
-          <!-- Sizes -->
           <div class="mt-10">
             <h3 class="text-sm font-medium text-gray-900">Veličina</h3>
             <fieldset class="mt-4">
@@ -152,7 +148,7 @@ const odabrana_boja = ref(null);
 onMounted(async () => {
   const id = route.params.id;
   try {
-    const response = await axios.get(`http://localhost:3055/proizvodi/${id}`);
+    const response = await axios.get(`http://localhost:3059/proizvodi/${id}`);
     proizvod.value = response.data;
   } catch (error) {
     console.error('Greška u dohvatu podataka:', error);
