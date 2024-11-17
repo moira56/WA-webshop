@@ -1,9 +1,11 @@
 <template>
-<div>
-<!-- Uključujemo komponentu -->
-<Proizvod />
-</div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
+
 <script setup>
-import Proizvod from './components/Proizvod.vue';
 </script>
+
+<style scoped>
+</style>
